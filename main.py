@@ -61,7 +61,7 @@ def home():
 def get_all_leaves():
     return jsonify(leaves)
 
-@app.route("/timeoff/add_leave/", methods = ["POST"])  #{user:, leave_type:, leave_date:}
+@app.route("/timeoff/leaves/", methods = ["POST"])  #{user:, leave_type:, leave_date:}
 def add_leave():
     request_data=request.get_json()
     new_leave = {
@@ -74,7 +74,7 @@ def add_leave():
     return new_leave
 
 
-@app.route("/timeoff/update/<int:id>", methods = ["PUT"])
+@app.route("/timeoff/leaves/<int:id>", methods = ["PUT"])
 def update_leave(id):
     request_data=request.get_json()
     for leave in leaves:
@@ -84,14 +84,14 @@ def update_leave(id):
             return leave
     return "No leave with that ID found"
 
-@app.route("/timeoff/<int:id>")
+@app.route("/timeoff/leaves/<int:id>")
 def get_leave(id):
     for leave in leaves:
         if leave["id"]==id:
             return jsonify(leave)
     return "No leave with that ID found"
 
-@app.route("/timeoff/delete/<int:id>", methods = ["DELETE"])
+@app.route("/timeoff/leaves/<int:id>", methods = ["DELETE"])
 def delete_leave(id):
     for leave in leaves:
         if leave["id"]==id:
@@ -104,7 +104,7 @@ def delete_leave(id):
 def get_all_logs():
     return jsonify(logs)
 
-@app.route("/timein/add_log", methods = ["POST"])
+@app.route("/timein/logs", methods = ["POST"])
 def add_log():
     request_data = request.get_json()
     new_log = {
@@ -126,14 +126,14 @@ def update_log(id):
             return log
     return "No log with that ID found"
 
-@app.route("/timein/<int:id>")
+@app.route("/timein/logs/<int:id>")
 def get_log(id):
     for log in logs:
         if log["id"]==id:
             return jsonify(log)
     return "No log with that ID found"
 
-@app.route("/timein/delete/<int:id>", methods = ["DELETE"])
+@app.route("/timein/logs/<int:id>", methods = ["DELETE"])
 def delete_log(id):
     for log in logs:
         if log["id"]==id:
@@ -146,7 +146,7 @@ def delete_log(id):
 def get_all_users():
     return jsonify(users)
 
-@app.route("/users/add", methods = ["POST"])
+@app.route("/users", methods = ["POST"])
 def add_user():
     request_data = request.get_json()
     new_user = {
@@ -157,7 +157,7 @@ def add_user():
     users.append(new_user)
     return new_user
 
-@app.route("/users/update/<int:id>", methods = ["PUT"])
+@app.route("/users/<int:id>", methods = ["PUT"])
 def update_user(id):
     request_data=request.get_json()
     for user in users:
@@ -174,7 +174,7 @@ def get_user(id):
             return jsonify(user)
     return "No user with that ID found"
 
-@app.route("/users/delete/<int:id>", methods = ["DELETE"])
+@app.route("/users/<int:id>", methods = ["DELETE"])
 def delete_user(id):
     for user in users:
         if user["id"]==id:
