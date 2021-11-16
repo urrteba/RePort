@@ -254,7 +254,7 @@ def update_user(id):
 
 
 @app.route("/users/<int:id>", endpoint = "get_user")
-@jwt_required
+@jwt_required()
 def get_user(id):
     for user in users:
         if user["id"]==id:
