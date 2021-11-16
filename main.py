@@ -260,6 +260,7 @@ def get_user(id):
         for user in users:
             if user.id==id:
                 return user.to_dict()
+    if (get_jwt()["level"]=="tl" or get_jwt()["level"]=="user"): return {"message":"Not and admin"}
     return {"message":"No user with that ID found"}, 404
 
 
