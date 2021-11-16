@@ -256,9 +256,10 @@ def update_user(id):
 @app.route("/users/<int:id>", endpoint = "get_user")
 @jwt_required()
 def get_user(id):
-    for user in users:
-        if user.id==id:
-            return user.to_dict()
+    if(get_jwt()["level"]=="admin"):
+        for user in users:
+            if user.id==id:
+                return user.to_dict()
     return {"message":"No user with that ID found"}, 404
 
 
