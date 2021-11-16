@@ -257,7 +257,7 @@ def update_user(id):
 @jwt_required()
 def get_user(id):
     for user in users:
-        if user["id"]==id:
+        if user.id==id:
             return jsonify(user)
     return "No user with that ID found", 404
 
