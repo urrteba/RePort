@@ -12,7 +12,7 @@ from flask_migrate import Migrate
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'postgresql://postgres:developer@localhost/postgres')
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://dyqcnffzbpsggq:222fe62fb4726221f1dac9273d066a25895908d0521131f9b29f6d5ca8779c1e@ec2-18-213-133-45.compute-1.amazonaws.com:5432/d9bkms8k27dsnf'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:developer@localhost/postgres'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:developer@localhost/postgres'
 app.config['SQL_ALCHEMY_MODIFICATIONS'] = False
 app.config["PROPAGATE_EXCEPTIONS"] = True
 app.config['JWT_SECRET_KEY'] = 'get_out'
