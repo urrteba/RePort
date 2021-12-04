@@ -1,6 +1,15 @@
 import datetime as dt
+from main import db
 
-class Leave:
+class Leave(db.Model):
+    __tablename__ = 'leaves'
+
+    id = db.Column(db.Integer, primary_key = True)
+    user = db.Column(db.Integer)
+    start_date = db.Column(db.String(80))
+    end_date = db.Column(db.String(80))
+    type = db.Column(db.Integer)
+
     def __init__(self,_id:int, user_id:int, start_date:str, end_date:str, type:int):
         self.id:int = _id
         self.user:int = user_id

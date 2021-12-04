@@ -1,6 +1,15 @@
 import datetime as dt
+from main import db
 
-class Log:
+class Log(db.Model):
+
+    __tablename__ = 'users'
+
+    id = db.Column(db.Integer, primary_key = True)
+    user = db.Column(db.Integer)
+    date = db.Column(db.String(80))
+    time_spent = db.Column(db.Float(precision = 2))
+
 
     def __init__(self,_id:int, user:int, date:str, time_spent: float):
         self.id = _id
