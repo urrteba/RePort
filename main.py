@@ -375,8 +375,9 @@ def get_user(id):
     if(get_jwt()["level"]=="admin"):
         user = User.query.filter_by(id=id).first()
         return user.to_dict()
-    if (get_jwt()["level"]=="tl" or get_jwt()["level"]=="user" and get_jwt["user_id"] == id):
-        return User.query.filter_by(id=id).first().to_dict()
+    elif (get_jwt()["level"]=="tl" or get_jwt()["level"]=="user" and get_jwt["user_id"] == id):
+        user = User.query.filter_by(id=id).first()
+        return user.to_dict()
     return {"message":"No user with that ID found"}, 404
 
 @app.route("/users/<int:id>", methods = ["DELETE"], endpoint = "delete_user")
